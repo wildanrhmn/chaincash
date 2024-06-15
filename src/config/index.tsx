@@ -9,9 +9,10 @@ export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
 if (!projectId) throw new Error('Project ID is not defined')
 
 const metadata = {
-  name: 'Cross Border Cash',
-  description: 'Cross border cash example',
-  url: 'http://localhost:3000',
+  name: 'ChainCash',
+  description: `ChainCash is a revolutionary web app that leverages blockchain technology to provide fast, secure, and low-cost cross-border cash transfers. 
+  With ChainCash, you can send and receive money globally with real-time tracking, minimal fees, and top-tier security.`,
+  url: 'https://chaincash.netlify.app',
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
