@@ -18,7 +18,7 @@ export default function Home() {
     <div>
       <div className="w-full bg-[#202127] py-2">
         <p className="text-[#DFE0D7] text-center text-sm sm:text-[14px]">
-          TransCrypt is a revolutionary web app that leverages blockchain
+          Chaincash is a revolutionary web app that leverages blockchain
           technology to provide fast, secure, and low-cost cross-border cash
           transfers.
         </p>

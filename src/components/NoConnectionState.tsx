@@ -16,7 +16,7 @@ const NoConnectionState = () => {
                     No wallet connected
                 </h3>
                 <p className="text-[#DFDFD6] opacity-50 text-sm sm:text-[14px] text-center">
-                    Connect your wallet to view your data
+                    Connect your wallet to start sending cryptocurrency
                 </p>
             </div>
         </div>

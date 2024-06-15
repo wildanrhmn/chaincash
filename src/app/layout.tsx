@@ -12,15 +12,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "TransCrypt - Revolutionary web app that leverages blockchain",
-    template: "%s | TransCrypt",
+    default: "ChainCash - Revolutionary web app that leverages blockchain",
+    template: "%s | ChainCash",
   },
-  description: `TransCrypt is a revolutionary web app that leverages blockchain technology to provide fast, secure, and low-cost cross-border cash transfers. 
-    With TransCrypt, you can send and receive money globally with real-time tracking, minimal fees, and top-tier security.`,
+  description: `ChainCash is a revolutionary web app that leverages blockchain technology to provide fast, secure, and low-cost cross-border cash transfers. 
+    With ChainCash, you can send and receive money globally with real-time tracking, minimal fees, and top-tier security.`,
   twitter: {
     card: "summary_large_image",
   },
-  metadataBase: new URL("https://transcrypt.vercel.app"),
+  metadataBase: new URL("https://chaincash.netlify.app"),
 };
 
 export default function RootLayout({
