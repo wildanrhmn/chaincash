@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-[#1B1B1F]`}>
         <Web3ModalProvider initialState={initialState}>
           <Header />
-          <main className="min-h-screen pt-[60px]">
+          <main className="min-h-screen pt-[60px] pb-[100px]">
             {children}
           </main>
         </Web3ModalProvider>

@@ -19,3 +19,45 @@
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
+table {
+  width: 100%;
+  text-align: left;
+}
+
+table thead tr {
+  color: #DFE0D7;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+table tr th {
+  padding: 15px 10px;
+}
+
+table tr td {
+  padding: 10px;
+}
+
+table tbody tr td {
+  color: #DFE0D7;
+  font-size: 13px;
+  padding: 15px 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #2B2F36;
+}
+
+table tbody tr td:nth-child(1) {
+  color: #6444ff;
+}
+table tbody tr td:nth-child(3) {
+  color: #6444ff;
+}
+table tbody tr td:nth-child(4) {
+  color: #6444ff;
+}

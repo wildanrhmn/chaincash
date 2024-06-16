@@ -64,7 +64,7 @@ const TransactionForm = () => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit(processForm)}
-      className="bg-[#202127] p-5 rounded-xl flex flex-col gap-4 min-w-[500px]"
+      className="bg-[#202127] p-5 rounded-xl flex flex-col gap-4 min-w-[400px] sm:min-w-[400px] md:min-w-[500px] mt-[60px] md:mt-0"
     >
       <div className="flex justify-center">
         <Image
