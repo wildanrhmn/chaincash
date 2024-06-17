@@ -1,5 +1,9 @@
+
 import Image from "next/image";
-export default function TransactionTable() {
+import { getAllTransactions } from "@/lib/data";
+
+export default async function TransactionTable() {
+    const transactions = await getAllTransactions();
     return (
         <div className="w-full h-full bg-[#202127] rounded-[10px] p-5 overflow-hidden">
             <div className="flex items-center justify-between">
@@ -26,16 +30,18 @@ export default function TransactionTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className="max-w-[150px]">0x8c7ef79d4c9f71616e76ca1e282b2e930906db1fecfc319fd1c0c86faf84bd84</td>
-                            <td>June 1, 2024</td>
-                            <td className="max-w-[150px]">0x8c7ef79d4c9f71616e76ca1e282b2e930906db1fecfc319fd1c0c86faf84bd84</td>
-                            <td className="max-w-[150px]">0x8c7ef79d4c9f71616e76ca1e282b2e930906db1fecfc319fd1c0c86faf84bd84</td>
-                            <td>0.094024262 ETH</td>
-                            <td>
-                                <span className="bg-[#E5F5F3] text-[#00A186] rounded-full px-2 py-1 font-semibold border border-[#00A186]/10">Success</span>
-                            </td>
-                        </tr>
+                        {transactions.map((transaction, index) => (
+                            <tr key={index}>
+                                <td className="max-w-[150px]">{transaction.hash}</td>
+                                <td>{transaction.date.toDateString()}</td>
+                                <td className="max-w-[150px]">{transaction.sender}</td>
+                                <td className="max-w-[150px]">{transaction.receiver}</td>
+                                <td>{transaction.amount}</td>
+                                <td>
+                                    <span className="bg-[#E5F5F3] text-[#00A186] rounded-full px-2 py-1 font-semibold border border-[#00A186]/10">{transaction.status}</span>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

@@ -24,6 +24,6 @@ const transactionSchema = new Schema({
     gasPrice: Number,
 });
 
-const Transaction = models.Transaction || model('Transaction', transactionSchema);
+const transaction = models.transaction || model('transaction', transactionSchema);
 
-export default Transaction;
+export default transaction;
