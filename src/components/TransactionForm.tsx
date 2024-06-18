@@ -1,19 +1,20 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
+import Swal from "sweetalert2";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { transactionSchema } from "../lib/zodSchema";
-import { useSendTransaction } from "wagmi";
+import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
-import Image from "next/image";
-import Swal from "sweetalert2";
+import { handleNewTransaction } from "@/lib/action";
 
 type Inputs = z.infer<typeof transactionSchema>;
 
 const TransactionForm = () => {
-  const { data: hash, status, sendTransaction, isPending } = useSendTransaction();
+  const { data: hash, sendTransaction, isPending } = useSendTransaction();
   const {
     register,
     handleSubmit,
@@ -36,29 +37,16 @@ const TransactionForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (status === "success") {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        background: "#202127",
-        title: "Transaction Success",
-        showConfirmButton: false,
-        timer: 3000,
-      });
-    }
+  const { data: receipt, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+    hash,
+  });
 
-    if (status === "error") {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        background: "#202127",
-        title: "Transaction Failed",
-        showConfirmButton: false,
-        timer: 3000,
-      });
+  useEffect(() => {
+    if (isConfirmed && receipt) {
+      const serializedReceipt = JSON.parse(JSON.stringify(receipt));
+      handleNewTransaction(serializedReceipt);
     }
-  }, [hash, status]);
+  }, [isConfirmed, receipt]);
 
   return (
     <form
@@ -122,9 +110,8 @@ const TransactionForm = () => {
         className="bg-[#2B2F36] border-none text-sm outline-none text-white text-opacity-40 focus:text-opacity-100 font-medium p-2 rounded-xl focus:ring-2 focus:ring-[#6444ff] py-3"
       ></textarea>
       <button
-        className={`bg-[#6444ff] p-2 rounded-xl text-white font-semibold text-sm hover:bg-[#6444ff]/80 transition-all duration-300 py-3 ${
-          isPending ? "opacity-50 cursor-not-allowed" : ""
-        }`}
+        className={`bg-[#6444ff] p-2 rounded-xl text-white font-semibold text-sm hover:bg-[#6444ff]/80 transition-all duration-300 py-3 ${isPending ? "opacity-50 cursor-not-allowed" : ""
+          }`}
         disabled={isPending}
       >
         {isPending ? "Sending..." : "Send"}
