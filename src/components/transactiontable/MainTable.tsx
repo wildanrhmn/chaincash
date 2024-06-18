@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { getAllTransactions } from "@/lib/data";
 
+export const revalidate = 60;
+
 export default async function TransactionTable() {
     const transactions = await getAllTransactions();
     return (
@@ -21,11 +23,12 @@ export default async function TransactionTable() {
                 <table>
                     <thead className="border-b border-[#DFE0D7]/10">
                         <tr className="text-[#DFE0D7] text-xs font-semibold">
-                            <th>Hash</th>
+                            <th>Transaction Hash</th>
                             <th>Date</th>
-                            <th>From</th>
-                            <th>To</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
                             <th>Amount</th>
+                            <th>Gas Price</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -36,7 +39,8 @@ export default async function TransactionTable() {
                                 <td>{transaction.date.toDateString()}</td>
                                 <td className="max-w-[150px]">{transaction.sender}</td>
                                 <td className="max-w-[150px]">{transaction.receiver}</td>
-                                <td>{transaction.amount}</td>
+                                <td>{transaction.amount} ETH</td>
+                                <td>{transaction.gasPrice} Gwei</td>
                                 <td>
                                     <span className="bg-[#E5F5F3] text-[#00A186] rounded-full px-2 py-1 font-semibold border border-[#00A186]/10">{transaction.status}</span>
                                 </td>

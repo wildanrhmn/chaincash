@@ -2,8 +2,6 @@ import TransactionTable from "@/components/transactiontable/MainTable";
 import TransactionStates from "./TransactionStates";
 import { Suspense } from "react";
 
-export const revalidate = 3600;
-
 export default async function Home() {
   return (
     <div>

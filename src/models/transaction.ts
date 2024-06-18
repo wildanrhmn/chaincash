@@ -4,10 +4,10 @@ export interface ITransaction {
     hash: string;
     block: string;
     sender: string;
-    fee: number;
-    gasPrice: number;
+    fee: string;
+    gasPrice: string;
     receiver: string;
-    amount: number;
+    amount: string;
     status: string;
     date: Date;
 }
